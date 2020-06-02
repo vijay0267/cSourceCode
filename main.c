@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include "INCLUDE/strings.h"
 
+
 int main(void)
 {
-    char name[40] = "Vijay Lakshman Kumar";
-    size_t length = 0Ul;
-
-    length = strlen(name);    
-
-    printf("Length of the name = %lu\n", length);
-    
-    return (0);
+	printf("%d\n", my_memcmp("vijay", "vijay", 1));
+    printf("%d\n", my_memcmp("vijay", "vijay", 2));
+    printf("%d\n", my_memcmp("vijay", "viJay", 3));
+    printf("%d\n", my_memcmp("vijAy", "vijay", 4));
+    printf("%d\n", my_memcmp("vijay", "zija", 5));
+	return 0;
 }
