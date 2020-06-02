@@ -3,6 +3,9 @@
 
 extern void *my_memchr(const void *string, int ch, size_t n);
 extern int my_memcmp (const void *string1, const void *string2, size_t n);
+extern void *my_memcpy (void *dest, const void *src, size_t n);
+extern void *my_memmove (void *dest, const void *src, size_t n);
+extern void *my_memset(void *string, int ch, size_t n);
 
 
 size_t strlen(const char *string);

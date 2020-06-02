@@ -38,7 +38,62 @@ int my_memcmp (const void *string1, const void *string2, size_t n)
     return (0);
 }
 
+/*
+ * Description:- The my_memcpy() function shall copy the first n bytes pointed to by src to the buffer pointed to by
+ * dest. Source and destination may not overlap.
+ *
+ * Return value:- The my_memcpy() function shall return the pointer dest; the function has no failure mode and no
+ * error return.
+*/
+void *my_memcpy (void *dest, const void *src, size_t n)
+{
+    char *dp = dest;
+    const char *sp = src;
 
+    for( ; 0 < n; ++dp, ++sp, --n)
+        *dp = *sp;
+
+    return (dest);
+}
+
+/*
+ * Description:- The my_memmove() function shall copy the first n bytes pointed to by src to the buffer pointed to by
+ * dest. Source and destination may overlap.
+ *
+ * Return value:- The my_memmove() function shall return the pointer dest; the function has no failure mode and no
+ * error return.
+*/
+void *my_memmove (void *dest, const void *src, size_t n)
+{
+    char *dp = dest;
+    const char *sp = src;
+
+    if((dp > sp) && (dp < (sp + n))) // copy backward
+        for(dp += (n-1), sp += (n-1); 0 < n; --dp, --sp, --n)
+            *dp = *sp;
+    else                            // copy forward
+        for( ; 0 < n; ++dp, ++sp, --n)
+            *dp = *sp;
+
+    return (dest);
+}
+
+/*
+ * Description:- The my_memset function copies the value of ch (converted to an unsigned char) into each of the
+ * ﬁrst n characters of the object pointed to by string.
+ *
+ * Return value:- The my_memset() function shall returns the value of s.
+*/
+void *my_memset(void *string, int ch, size_t n)
+{
+    unsigned char *s = string;
+    const unsigned char c = (char)ch;
+
+    for( ; 0 < n; ++s, --n)
+        *s = c;
+
+    return (string);
+}
 
 /*
  * This function returns the length of the string except NULL.
