@@ -1,10 +1,5 @@
 #include <stddef.h>
-
-typedef struct singleLinkedListNode
-{
-    int data;
-    struct singleLinkedListNode *next_link;
-} singleLinkedList_st;
+#include "INCLUDE/single_linked_list.h"
 
 void addNodeBackOfLinkedList(singleLinkedList_st **head, int value)
 {
@@ -34,6 +29,27 @@ void addNodeBackOfLinkedList(singleLinkedList_st **head, int value)
     }
 }
 
+void deleteNodeBackOfLinkedList(singleLinkedList_st *head, int value)
+{
+    singleLinkedList_st *temp_list = head;
+
+    if(head == NULL)
+    {
+        printf("Single linked list is empty. Node can't be deleted...\n");
+    }
+    else
+    {
+        while(temp_list->next_link != NULL)
+        {
+            head = temp_list;
+            temp_list = temp_list->next_link;
+        }
+
+        free(temp_list);
+        head->next_link = NULL;
+    }
+}
+
 void addNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
 {
     singleLinkedList_st *temp_node = NULL, *temp_list = *head;
@@ -57,6 +73,21 @@ void addNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
             *head = temp_list;
         }
 
+    }
+}
+
+void deleteNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
+{
+    singleLinkedList_st *temp_list = *head;
+
+    if(*head == NULL)
+    {
+        printf("Single linked list is empty. Node can't be deleted...\n");
+    }
+    else
+    {
+        *head = (*head)->next_link;
+        free(temp_list);
     }
 }
 
