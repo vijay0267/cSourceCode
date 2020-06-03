@@ -240,6 +240,11 @@ char *my_strrchr (const char *string, int ch)
     }
 }
 
+char *my_strstr(const char* string1, const char *string2)
+{
+    
+}
+
 /*
  * Description:- The my_strlen() function shall compute the number of bytes in the string to which string points,
  * not including the terminating null byte.
