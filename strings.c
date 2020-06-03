@@ -96,7 +96,52 @@ void *my_memset(void *string, int ch, size_t n)
 }
 
 /*
- * This function returns the length of the string except NULL.
+ * Description:- The my_strcat() function shall append the null-terminated string pointed to by src to the
+ * null-terminated string pointed to by dest. The first character of src overwrites the null-terminator of dest.
+ * Source and destination may not overlap.
+ *
+ * Return value:- The my_strcat() function shall return the pointer dest; the function has no failure mode and no
+ * error return.
+*/
+char *my_strcat (char *dest, const char *src)
+{
+    char *temp_string = dest;
+
+    for( ; *dest != '\0'; ++dest);
+
+    for( ; (*dest = *src) != '\0'; ++dest, ++src);
+
+    return (temp_string);
+}
+
+/*
+ * Description:- The my_strchr() function locates the ﬁrst occurrence of c (converted to a char) in the string pointed
+ * to by s. The terminating null character is considered to be part of the string.
+ *
+ * Return value:- The strchr() function returns a pointer to the located character, or a null pointer if the character
+ * does not occur in the string.
+*/
+char *my_strchr (const char *string, int ch)
+{
+    const char c = ch;
+
+    for( ; *string != '\0', ++string)
+        if(c == *string)
+            return (char *)(string);
+
+    return (NULL);
+}
+
+int strcmp(const char *string1, const char *string2)
+{
+    
+}
+
+
+/*
+ * Description:-
+ *
+ * Return value:-
 */
 size_t my_strlen(const char *string)
 {
