@@ -115,6 +115,93 @@ char *my_strcat (char *dest, const char *src)
 }
 
 /*
+ * Description:- The my_strncat() function shall append not more than n characters of the null-terminated string
+ * pointed to by src to the null-terminated string pointed to by dest. The first character of src overwrites
+ * the null-terminator of dest. Source and destination may not overlap.
+ *
+ * Return value:- The my_strncat() function shall return the pointer dest; the function has no failure mode and no
+ * error return.
+*/
+char *my_strncat (char *dest, const char *src, size_t n)
+{
+    char *temp_string = dest;
+
+    for( ; *dest != '\0'; ++dest);
+
+    for( ; (0 < n) && (*src != '\0'); ++dest, ++src, --n)
+        *dest = *src;
+    *dest = '\0';
+
+    return (temp_string);
+}
+
+/*
+ * Description:- The my_strcmp() function compares the string pointed to by string1 to the string pointed to by string2.
+ *
+ * Return value:- The my_strcmp() function returns an integer greater than, equal to, or less than zero, accordingly as
+ * the string pointed to by string1 is greater than, equal to, or less than the string pointed to by string2.
+*/
+int my_strcmp (const char *string1, const char *string2)
+{
+    for( ; *string1 == *string2; ++string1, ++string2)
+        if(*string1 == '\0')
+            return (0);
+
+    return ((*(unsigned char *)string1 < *(unsigned char *)string2)? -1: +1);
+}
+
+/*
+ * Description:- The my_strncmp() function compares not more thaan n characters of the string pointed to by
+ * string1 to the string pointed to by string2.
+ *
+ * Return value:- The my_strcmp() function returns an integer greater than, equal to, or less than zero, accordingly
+ * as the string pointed to by string1 is greater than, equal to, or less than the string pointed to by string2.
+*/
+int my_strncmp (const char *string1, const char *string2, size_t n)
+{
+    for( ;(0 < n) && (*string1 == *string2); ++string1, ++string2, --n)
+        if(*string1 == '\0')
+            return (0);
+
+    return ((*(unsigned char *)string1 < *(unsigned char *)string2)? -1: +1);
+}
+
+/*
+ * Description:- The my_strcpy() function shall copy the null-terminated string pointed to by src to the memory
+ * pointed to by dest. Source and destination may not overlap.
+ *
+ * Return value:- The my_strcpy() function shall return the pointer dest; the function has no failure mode
+ * and no error return.
+*/
+char *my_strcpy (char *dest, const char *src)
+{
+    char *temp_string = dest;
+
+    for( ; ((*dest = *src) != '\0'); ++dest, ++src, --n)
+
+    return (temp_string);
+}
+
+/*
+ * Description:- The strncpy() function shall copy not more-than n characters of the null-terminated string
+ * pointed to by src to the memory pointed to by dest. Source and destination may not overlap.
+ *
+ * Return value:- The my_strncpy() function shall return the pointer dest; the function has no failure mode
+ * and no error return.
+*/
+char *my_strncpy (char *dest, const char *src, size_t n)
+{
+    char *temp_string = dest;
+
+    for( ; (0 < n) && (*src != '\0'); ++dest, ++src, --n)
+        *dest = *src;
+    for( ; (0 < n); ++dest, --n)
+        *dest = '\0';
+
+    return (temp_string);
+}
+
+/*
  * Description:- The my_strchr() function locates the ﬁrst occurrence of c (converted to a char) in the string pointed
  * to by s. The terminating null character is considered to be part of the string.
  *
@@ -125,33 +212,45 @@ char *my_strchr (const char *string, int ch)
 {
     const char c = ch;
 
-    for( ; *string != '\0', ++string)
-        if(c == *string)
-            return (char *)(string);
+    for( ; *string != c, ++string)
+        if(*string == '\0')
+            return (NULL);
 
-    return (NULL);
+    return (char *)(string);
 }
-
-int strcmp(const char *string1, const char *string2)
-{
-    
-}
-
 
 /*
- * Description:-
+ * Description:- The my_strrchr() function locates the last occurrence of c (converted to a char) in the string pointed
+ * to by s. The terminating null character is considered to be part of the string.
  *
- * Return value:-
+ * Return value:- The strchr() function returns a pointer to the located character, or a null pointer if the character
+ * does not occur in the string.
+*/
+char *my_strrchr (const char *string, int ch)
+{
+    const char c = ch;
+    const char *temp_string = NULL;
+
+    for( ; ; ++string)
+    {
+        if(c == *string)
+            temp_string = string;
+        if(*string == '\0')
+            return (char *)(temp_string);
+    }
+}
+
+/*
+ * Description:- The my_strlen() function shall compute the number of bytes in the string to which string points,
+ * not including the terminating null byte.
+ *
+ * Return value:- The my_strlen() function shall return the length of s; the function has no failure mode and
+ * no error return.
 */
 size_t my_strlen(const char *string)
 {
-    size_t string_length = 0Ul;
+    const char *temp_string = string;
+    for( ; *temp_string != '\0', ++temp_string);
 
-    while(*string != '\0')
-    {
-        ++string_length;
-        ++string;
-    }
-
-    return string_length;
+    return (string - temp_string);
 }
