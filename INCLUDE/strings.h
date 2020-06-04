@@ -16,7 +16,7 @@ extern char *my_strncpy (char *dest, const char *src, size_t n);
 
 extern char *my_strchr (const char *string, int ch);
 extern char *my_strrchr (const char *string, int ch);
-
+extern char *my_strstr(const char* string1, const char *string2);
 
 extern size_t strlen(const char *string);
 

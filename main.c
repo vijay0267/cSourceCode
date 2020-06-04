@@ -2,12 +2,22 @@
 #include "INCLUDE/strings.h"
 
 
+
 int main(void)
 {
-	printf("%d\n", my_memcmp("vijay", "vijay", 1));
-    printf("%d\n", my_memcmp("vijay", "vijay", 2));
-    printf("%d\n", my_memcmp("vijay", "viJay", 3));
-    printf("%d\n", my_memcmp("vijAy", "vijay", 4));
-    printf("%d\n", my_memcmp("vijay", "zija", 5));
+	const char a1[40] = "vijaylakshman";
+	const char a2[40] = "vijaylakshmanvijvia";
+	const char a3[40] = "vijaylakshman";
+	const char a4[40] = "vijaylaklaklakshman";
+	const char a5[40] = "vijaylakshman";
+
+	const char b1[20] = "vij";
+
+	printf("%s\n", my_strstr(a1, b1));
+	printf("%s\n", my_strstr(a2, "via"));
+	printf("%s\n", my_strstr("vijaylakshman", "lak"));
+	printf("%s\n", my_strstr(a4, "laks"));
+	printf("%s\n", my_strstr("vijaylakshman", "\0"));
+
 	return 0;
 }

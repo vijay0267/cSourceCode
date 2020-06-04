@@ -177,7 +177,7 @@ char *my_strcpy (char *dest, const char *src)
 {
     char *temp_string = dest;
 
-    for( ; ((*dest = *src) != '\0'); ++dest, ++src, --n)
+    for( ; ((*dest = *src) != '\0'); ++dest, ++src)
 
     return (temp_string);
 }
@@ -212,7 +212,7 @@ char *my_strchr (const char *string, int ch)
 {
     const char c = ch;
 
-    for( ; *string != c, ++string)
+    for( ; *string != c; ++string)
         if(*string == '\0')
             return (NULL);
 
@@ -240,9 +240,34 @@ char *my_strrchr (const char *string, int ch)
     }
 }
 
+/*
+ * Description:- The my_strstr() function locates the ﬁrst occurrence in the string pointed to by string1 of
+ * the sequence of characters (excluding the terminating null character) in the string pointed to by string2.
+ *
+ * Return value:- The my_strstr function returns a pointer to the located string, or a null pointer if the
+ * string is not found. If string2 points to a string with zero length, the function returns string1.
+*/
 char *my_strstr(const char* string1, const char *string2)
 {
-    
+    const char *temp_str1 = string1, *temp_str2 = string2;
+
+    if(*string2 == '\0')
+        return (char *)(string1);
+
+    for( ; *string1 != '\0'; ++string1)
+    {
+        if(*string1 == *string2)
+        {
+            for(temp_str1 = string1, temp_str2 = string2; ; )
+            {
+                if(*++temp_str2 == '\0')
+                    return (char *)(string1);
+                else if(*++temp_str1 != *temp_str2)
+                    break;
+            }
+        }
+    }
+    return (NULL);
 }
 
 /*
@@ -255,7 +280,7 @@ char *my_strstr(const char* string1, const char *string2)
 size_t my_strlen(const char *string)
 {
     const char *temp_string = string;
-    for( ; *temp_string != '\0', ++temp_string);
+    for( ; *temp_string != '\0'; ++temp_string);
 
     return (string - temp_string);
 }
