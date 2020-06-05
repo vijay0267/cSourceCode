@@ -284,3 +284,52 @@ size_t my_strlen(const char *string)
 
     return (string - temp_string);
 }
+
+/*
+ * Description:- The my_strspn() function computes the length of the maximum initial segment of the string
+ * pointed to by string1 which consists entirely of characters from the string pointed to by string2.
+ *
+ * Return value:- The my_strspn() function returns the length of the segment.
+ *
+*/
+size_t my_strspn (const char *string1, const char *string2)
+{
+    const char *s1 = NULL, *s2 = NULL;
+
+    for(s1 = string1 ; *s1 != '\0'; ++s1)
+        for( s2 = string2 ; ; ++s2)
+            if(*s2 == '\0')
+                return (s1 - string1);
+            else if(*s1 == *s2)
+                break;
+
+    return (s1 - string1);
+}
+
+/*
+ * Description:- The my_strcspn() function computes the length of the maximum initial segment of the string
+ * pointed to by string1 which consists entirely of characters not from the string pointed to by string2.
+ *
+ * Return value:- The my_strcspn() function returns the length of the segment.
+ *
+*/
+size_t my_strcspn (const char *string1, const char *string2)
+{
+    const char *s1 = NULL, *s2 = NULL;
+
+    for(s1 = string1 ; *s1 != '\0'; ++s1)
+        for( s2 = string2 ; *s2 != '\0'; ++s2)
+            if(*s1 == *s2)
+                return (s1 - string1);
+
+    return (s1 - string1);
+}
+
+
+
+/*
+ * Description:-
+ *
+ * Return value:-
+ *
+*/

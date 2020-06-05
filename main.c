@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "INCLUDE/strings.h"
-
+#include <string.h>
 
 
 int main(void)
@@ -13,11 +13,15 @@ int main(void)
 
 	const char b1[20] = "vij";
 
-	printf("%s\n", my_strstr(a1, b1));
-	printf("%s\n", my_strstr(a2, "via"));
-	printf("%s\n", my_strstr("vijaylakshman", "lak"));
-	printf("%s\n", my_strstr(a4, "laks"));
-	printf("%s\n", my_strstr("vijaylakshman", "\0"));
+	printf("%lu\n", my_strspn(a1, b1));
+	printf("%lu\n", my_strspn(a1, "va"));
+	printf("%lu\n", my_strspn(a1, "z"));
+	printf("%lu\n", my_strspn(a1, "ivjayl"));
+
+	printf("%lu\n", strspn(a1, b1));
+	printf("%lu\n", strspn(a1, "va"));
+	printf("%lu\n", strspn(a1, "z"));
+	printf("%lu\n", strspn(a1, "ivjayl"));
 
 	return 0;
 }
