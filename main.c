@@ -23,5 +23,5 @@ int main(void)
 	printf("%lu\n", strspn(a1, "z"));
 	printf("%lu\n", strspn(a1, "ivjayl"));
 
-	return 0;
+	return (EXIT_SUCCESS);
 }
