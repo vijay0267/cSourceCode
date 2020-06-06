@@ -353,6 +353,15 @@ char *my_strtok (char *string1, const char *string2)
     return str_begin;
 }
 
+char *my_strpbrk(const char *string1, const char *string2)
+{
+    for( ; *string1 != '\0'; ++string1)
+        for( ; *string2 != '\0'; ++string2)
+            if(*string1 == *string2)
+                return ((char *)string1);
+
+    return NULL;
+}
 /*
  * Description:-
  *

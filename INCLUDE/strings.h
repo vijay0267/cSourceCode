@@ -24,4 +24,6 @@ extern size_t my_strspn (const char *string1, const char *string2);
 extern size_t my_strcspn (const char *string1, const char *string2);
 extern char  *my_strtok (char *string1, const char *string2);
 
+extern char *my_strpbrk(const char *string1, const char *string2);
+
 #endif
