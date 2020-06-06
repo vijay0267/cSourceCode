@@ -325,7 +325,33 @@ size_t my_strcspn (const char *string1, const char *string2)
     return (s1 - string1);
 }
 
+/*
+ * Description:- The my_strtok() function breaks the string string1 into tokens and null-terminates them.
+ * Delimiter-Characters at the beginning and end of string are skipped. On each subsequent call delim may change.
+ *
+ * Return value:- The first token if possible, a null-pointer otherwise.
+ *
+*/
+char *my_strtok (char *string1, const char *string2)
+{
+    char *str_begin, *str_end;
+    static char *str_saved = "";
 
+    str_begin = string1 ? string1:str_saved;
+    str_begin += my_strspn(str_begin, string2);
+    if(*str_begin == '\0')
+    {
+        str_saved = "";
+        return NULL;
+    }
+    str_end = str_begin + my_strcspn(str_begin, string2);
+
+    if(*str_end != '\0')
+        *str_end++ = '\0';
+    str_saved = str_end;
+
+    return str_begin;
+}
 
 /*
  * Description:-
