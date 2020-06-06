@@ -1,7 +1,8 @@
-#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "INCLUDE/single_linked_list.h"
 
-void addNodeBackOfLinkedList(singleLinkedList_st **head, int value)
+void addNodeBackOfSingleLinkedList(singleLinkedList_st **head, int value)
 {
     singleLinkedList_st *temp_node = NULL, *temp_list = *head;
 
@@ -29,14 +30,12 @@ void addNodeBackOfLinkedList(singleLinkedList_st **head, int value)
     }
 }
 
-void deleteNodeBackOfLinkedList(singleLinkedList_st *head, int value)
+void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head)
 {
     singleLinkedList_st *temp_list = head;
 
     if(head == NULL)
-    {
         printf("Single linked list is empty. Node can't be deleted...\n");
-    }
     else
     {
         while(temp_list->next_link != NULL)
@@ -50,7 +49,7 @@ void deleteNodeBackOfLinkedList(singleLinkedList_st *head, int value)
     }
 }
 
-void addNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
+void addNodeFrontOfSingleLinkedList(singleLinkedList_st **head, int value)
 {
     singleLinkedList_st *temp_node = NULL, *temp_list = *head;
 
@@ -76,14 +75,12 @@ void addNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
     }
 }
 
-void deleteNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
+void deleteNodeFrontOfSingleLinkedList(singleLinkedList_st **head)
 {
     singleLinkedList_st *temp_list = *head;
 
     if(*head == NULL)
-    {
         printf("Single linked list is empty. Node can't be deleted...\n");
-    }
     else
     {
         *head = (*head)->next_link;
@@ -93,12 +90,10 @@ void deleteNodeFrontOfLinkedList(singleLinkedList_st **head, int value)
 
 void traverseSingleLinkedList(singleLinkedList_st *head)
 {
-    singleLinkedList_st list_head = head;
+    singleLinkedList_st *list_head = head;
 
     if(head == NULL)
-    {
         printf ("The linked list is empty....\n");
-    }
     else
     {
         while (list_head != NULL)

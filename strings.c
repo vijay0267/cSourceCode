@@ -353,6 +353,14 @@ char *my_strtok (char *string1, const char *string2)
     return str_begin;
 }
 
+/*
+ * Description:- The my_strpbrk() function locates the ﬁrst occurrence in the string pointed to by string1 of
+ * any character from the string pointed to by string2.
+ *
+ * Return value:- The my_strpbrk() function returns a pointer to the character, or a null pointer if no
+ * character from string2 occurs in string1.
+ *
+*/
 char *my_strpbrk(const char *string1, const char *string2)
 {
     for( ; *string1 != '\0'; ++string1)
@@ -362,6 +370,7 @@ char *my_strpbrk(const char *string1, const char *string2)
 
     return NULL;
 }
+
 /*
  * Description:-
  *
