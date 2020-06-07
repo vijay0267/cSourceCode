@@ -116,3 +116,25 @@ void findMiddleOfSingleLinkedList(singleLinkedList_st *head, singleLinkedList_st
         *middle = slow_ptr;
     }
 }
+
+void addMiddleOfSingleLinkedList(singleLinkedList_st *head, int value)
+{
+    singleLinkedList_st *middle = NULL, *temp_node = NULL;
+
+    temp_node = (singleLinkedList_st *)malloc(sizeof(singleLinkedList_st));
+
+    if(temp_node == NULL)
+        printf("malloc() error... memory is not allocated...\n");
+    else
+    {
+        findMiddleOfSingleLinkedList(head , &middle);
+
+        while(head->next_link != middle)
+            head = head->next_link;
+
+        temp_node->data = value;
+        temp_node->next_link = middle;
+        head->next_link = temp_node;
+    }
+
+}
