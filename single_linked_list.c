@@ -51,25 +51,22 @@ void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head)
 
 void addNodeFrontOfSingleLinkedList(singleLinkedList_st **head, int value)
 {
-    singleLinkedList_st *temp_node = NULL, *temp_list = *head;
-
+    singleLinkedList_st *temp_node = NULL;
     temp_node = (singleLinkedList_st *)malloc(sizeof(singleLinkedList_st));
+
     if(temp_node == NULL)
-    {
         printf("malloc() error... memory is not allocated...\n");
-    }
     else
     {
         temp_node->data = value;
         temp_node->next_link = NULL;
+
         if((*head) == NULL)
-        {
             *head = temp_node;
-        }
         else
         {
-            temp_list->next_link = *head;
-            *head = temp_list;
+            temp_node->next_link = *head;
+            *head = temp_node;
         }
 
     }
@@ -101,5 +98,21 @@ void traverseSingleLinkedList(singleLinkedList_st *head)
             printf("\t %d \n", list_head->data);
             list_head = list_head->next_link;
         }
+    }
+}
+
+void findMiddleOfSingleLinkedList(singleLinkedList_st *head, singleLinkedList_st **middle)
+{
+    singleLinkedList_st *slow_ptr = head;
+    singleLinkedList_st *fast_ptr = head;
+
+    if (head != NULL)
+    {
+        while (fast_ptr != NULL && fast_ptr->next_link != NULL)
+        {
+            fast_ptr = fast_ptr->next_link->next_link;
+            slow_ptr = slow_ptr->next_link;
+        }
+        *middle = slow_ptr;
     }
 }

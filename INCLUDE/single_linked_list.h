@@ -12,6 +12,7 @@ extern void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head);
 extern void addNodeFrontOfSingleLinkedList(singleLinkedList_st **head, int value);
 extern void deleteNodeFrontOfSingleLinkedList(singleLinkedList_st **head);
 extern void traverseSingleLinkedList(singleLinkedList_st *head);
+extern void findMiddleOfSingleLinkedList(singleLinkedList_st *head, singleLinkedList_st **middle);
 
 
 
