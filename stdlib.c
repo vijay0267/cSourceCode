@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include <stdef.h>
+#include <string.h>
 #include <pthread.h>
 
 
@@ -111,4 +111,21 @@ void my_free(void *mem_block)
 	}
 	header->memData.is_free = 1;
 	pthread_mutex_unlock(&global_malloc_lock);
+}
+
+void *my_calloc(size_t num, size_t nsize)
+{
+	size_t size;
+	void *block;
+	if (!num || !nsize)
+		return NULL;
+	size = num * nsize;
+	/* check mul overflow */
+	if (nsize != size / num)
+		return NULL;
+	block = my_malloc(size);
+	if (!block)
+		return NULL;
+	memset(block, 0, size);
+	return block;
 }
