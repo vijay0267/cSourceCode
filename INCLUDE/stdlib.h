@@ -9,10 +9,12 @@ typedef union header_data {
 		size_t size;
 		unsigned int is_free;
 		union header_data *next;
-	} memData_t;
+	} memData;
 	SPACE head_size;
 }header_t;
 
-
+extern header_t *getFreeMemoryBlock(size_t size);
+extern void *my_malloc(size_t size);
+extern void my_free(void *mem_block);
 
 #endif
