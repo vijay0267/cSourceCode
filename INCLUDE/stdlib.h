@@ -1,16 +1,18 @@
 #ifndef __STDLIB_H__
 #define __STDLIB_H__
 
-typedef char ALIGN[16];
+typedef char SPACE[16];
+typedef unsigned long size_t;
 
-typedef union header {
+typedef union header_data {
 	struct {
 		size_t size;
-		unsigned is_free;
-		union header *next;
-	} s;
-	ALIGN stub;
+		unsigned int is_free;
+		union header_data *next;
+	} memData_t;
+	SPACE head_size;
 }header_t;
+
 
 
 #endif
