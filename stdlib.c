@@ -129,3 +129,24 @@ void *my_calloc(size_t num, size_t nsize)
 	memset(block, 0, size);
 	return block;
 }
+
+void *my_realloc(void *block, size_t size)
+{
+	header_t *header;
+	void *new_block;
+	if (!block || !size)
+		return my_malloc(size);
+
+	header = (header_t*)block - 1;
+	if (header->memData.size >= size)
+		return block;
+
+	ret = my_malloc(size);
+	if (new_block) {
+		/* Relocate contents to the new bigger block */
+		memcpy(ret, block, header->memData.size);
+		/* Free the old memory block */
+		my_free(block);
+	}
+	return ret;
+}
