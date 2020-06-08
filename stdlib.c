@@ -2,6 +2,7 @@
 #include <string.h>
 #include <pthread.h>
 
+#include "INCLUDE/stdlib.h"
 
 header_t *head = NULL, *tail = NULL;
 pthread_mutex_t global_malloc_lock;
@@ -141,12 +142,12 @@ void *my_realloc(void *block, size_t size)
 	if (header->memData.size >= size)
 		return block;
 
-	ret = my_malloc(size);
+	new_block = my_malloc(size);
 	if (new_block) {
 		/* Relocate contents to the new bigger block */
-		memcpy(ret, block, header->memData.size);
+		memcpy(new_block, block, header->memData.size);
 		/* Free the old memory block */
 		my_free(block);
 	}
-	return ret;
+	return new_block;
 }
