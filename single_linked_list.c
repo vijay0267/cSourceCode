@@ -30,22 +30,26 @@ void addNodeBackOfSingleLinkedList(singleLinkedList_st **head, int value)
     }
 }
 
-void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head)
+void deleteNodeBackOfSingleLinkedList(singleLinkedList_st **head)
 {
-    singleLinkedList_st *temp_list = head;
+    singleLinkedList_st *temp_list1 = *head, temp_list_2 = NULL;
 
-    if(head == NULL)
+    if(*head == NULL)
         printf("Single linked list is empty. Node can't be deleted...\n");
     else
     {
-        while(temp_list->next_link != NULL)
+        if(temp_list_1->next_link == NULL)
+            *head = NULL;
+        else
         {
-            head = temp_list;
-            temp_list = temp_list->next_link;
+            while(temp_list_1->next_link != NULL)
+            {
+                temp_list_2 = temp_list_1;
+                temp_list_1 = temp_list_1->next_link;
+            }
+            temp_list_2->next_link = NULL;
         }
-
-        free(temp_list);
-        head->next_link = NULL;
+        free(temp_list_1);
     }
 }
 

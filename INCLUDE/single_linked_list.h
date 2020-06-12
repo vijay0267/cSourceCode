@@ -8,7 +8,7 @@ typedef struct singleLinkedListNode
 } singleLinkedList_st;
 
 extern void addNodeBackOfSingleLinkedList(singleLinkedList_st **head, int value);
-extern void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head);
+extern void deleteNodeBackOfSingleLinkedList(singleLinkedList_st **head);
 extern void addNodeFrontOfSingleLinkedList(singleLinkedList_st **head, int value);
 extern void deleteNodeFrontOfSingleLinkedList(singleLinkedList_st **head);
 extern void traverseSingleLinkedList(singleLinkedList_st *head);

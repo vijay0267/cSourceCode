@@ -43,18 +43,16 @@ void deleteNodeBackOfCircularLinkedList(circularLinkedList_st **head)
         if(temp_list_1->next_link == *head)
         {
             *head = NULL;
-            free(temp_list_1);
         }
         else
         {
-            temp_list_2 = temp_list_1;
             while(temp_list1->next_link != *head)
             {
                 temp_list_2 = temp_list_1;
                 temp_list_1 = temp_list_1->next_link;
             }
             temp_list_2->next_link = *head;
-            free(temp_list_1);
         }
+        free(temp_list_1);
     }
 }
