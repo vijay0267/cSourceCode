@@ -7,8 +7,9 @@ typedef struct circularLinkedListNode
     struct circularLinkedListNode *next_link;
 } circularLinkedList_st;
 
-extern void addNodeBackOfCircularLinkedList(circularLinkedList_st **head, int value)
+extern void addNodeBackOfCircularLinkedList(circularLinkedList_st **head, int value);
 extern void deleteNodeBackOfCircularLinkedList(circularLinkedList_st **head);
 extern void addNodeFrontOfCircularLinkedList(circularLinkedList_st **head, int value);
+extern void deleteNodeFrontOfCircularLinkedList(circularLinkedList_st **head);
 
 #endif

@@ -81,3 +81,27 @@ void addNodeFrontOfCircularLinkedList(circularLinkedList_st **head, int value)
         }
     }
 }
+
+void deleteNodeFrontOfCircularLinkedList(circularLinkedList_st **head)
+{
+    circularLinkedList_st *temp_list_1 = *head, *temp_list_2 = *head;
+
+    if(*head == NULL)
+        printf("Single linked list is empty. Node can't be deleted...\n");
+    else
+    {
+        if(temp_list_1->next_link == *head)
+        {
+            *head = NULL;
+        }
+        else
+        {
+            while(temp_list_2->next_link != temp_list_1)
+                temp_list_2 = temp_list_2->next_link;
+
+            *head = temp_list_1->next_link;
+            temp_list_2->next_link = *head;
+        }
+        free(temp_list_1);
+    }
+}
