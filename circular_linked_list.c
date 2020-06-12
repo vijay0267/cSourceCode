@@ -4,47 +4,57 @@
 
 void addNodeBackOfCircularLinkedList(circularLinkedList_st **head, int value)
 {
-    singleLinkedList_st *temp_node = NULL, *temp_list = *head;
+    circularLinkedList_st *new_node = NULL, *temp_list = *head;
 
-    temp_node = (singleLinkedList_st *)malloc(sizeof(singleLinkedList_st));
-    if(temp_node == NULL)
+    new_node = (circularLinkedList_st *)malloc(sizeof(circularLinkedList_st));
+    if(new_node == NULL)
     {
         printf("malloc() error... memory is not allocated...\n");
     }
     else
     {
-        temp_node->data = value;
-        temp_node->next_link = NULL;
+        new_node->data = value;
+
         if((*head) == NULL)
         {
-            *head = temp_node;
+            *head = new_node;
+            (*head)->next_link = *head;
         }
         else
         {
-            while(temp_list->next_link != NULL)
+            while(temp_list->next_link != *head)
                 temp_list = temp_list->next_link;
 
-            temp_list->next_link = temp_node;
+            new_node->next_link = *head;
+            temp_list->next_link = new_node;
         }
 
     }
 }
 
-void deleteNodeBackOfSingleLinkedList(singleLinkedList_st *head)
+void deleteNodeBackOfCircularLinkedList(circularLinkedList_st **head)
 {
-    singleLinkedList_st *temp_list = head;
+    singleLinkedList_st *temp_list_1 = *head, *temp_list_2 = NULL;
 
-    if(head == NULL)
+    if(*head == NULL)
         printf("Single linked list is empty. Node can't be deleted...\n");
     else
     {
-        while(temp_list->next_link != NULL)
+        if(temp_list_1->next_link == *head)
         {
-            head = temp_list;
-            temp_list = temp_list->next_link;
+            *head = NULL;
+            free(temp_list_1);
         }
-
-        free(temp_list);
-        head->next_link = NULL;
+        else
+        {
+            temp_list_2 = temp_list_1;
+            while(temp_list1->next_link != *head)
+            {
+                temp_list_2 = temp_list_1;
+                temp_list_1 = temp_list_1->next_link;
+            }
+            temp_list_2->next_link = *head;
+            free(temp_list_1);
+        }
     }
 }
