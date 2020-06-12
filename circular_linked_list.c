@@ -105,3 +105,20 @@ void deleteNodeFrontOfCircularLinkedList(circularLinkedList_st **head)
         free(temp_list_1);
     }
 }
+
+void traverseCircularLinkedList(circularLinkedList_st *head)
+{
+    circularLinkedList_st *list_head = head;
+
+    if(list_head == NULL)
+        printf ("The linked list is empty....\n");
+    else
+    {
+        do
+        {
+            printf("\t %d \n", list_head->data);
+            list_head = list_head->next_link;
+        }
+        while (list_head != NULL);
+    }
+}
