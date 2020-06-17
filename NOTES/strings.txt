@@ -1,2 +1,2 @@
 The <string.h> header file declares one variable type(size_t), one macro(NULL) and several functions.
-If an array is accessed beyond the length of the object, the behaviour is undefined.  
+If an array is accessed beyond the length of the object, the behaviour is undefined.
